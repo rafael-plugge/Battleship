@@ -19,9 +19,7 @@ public:
 	void incTurn();
 	void destroyShip(const int &);
 
-	/**/
 	// Getters
-	/**/
 
 	const int & getMisses() const;
 	const Player * getOpponent() const;
@@ -29,23 +27,23 @@ public:
 	const int & getNumOfShips() const;
 	const Ship & getShip(const int &) const;
 
-	/**/
 	// Setters
-	/**/
 
 	void setMisses(const int &);
-	void setOpponent(const Player *);
+	void setOpponent(Player *);
 	void setCurrentTurn(const int &);
 	void setNumOfShips(const int &);
 	void setShip(const Ship &, const int &);
 
 private:
+	static const int s_MAX_SHIPS = 4;
+
 	std::string m_name;
 	int m_misses;
 	Player * m_opponent;
 	int m_currentTurn;
 	int m_numOfShips;
-	Ship m_ships[4];
+	Ship * m_ships;
 };
 
 #endif // !PLAYER_H

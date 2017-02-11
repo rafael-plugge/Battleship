@@ -2,7 +2,16 @@
 
 Game::Game()
 	: m_window(sf::VideoMode(800u, 600u), "Battleship")
+	, m_timeElapsed(sf::Time::Zero)
+	, m_numOfTurns(0)
+	, m_winner(nullptr)
+	, m_state(GameStates::MainMenu)
+	, m_customizeType(Type::None)
+	, m_player1()
+	, m_player2()
+	, m_board()
 {
+	DebugMsg("In the MainMenu Screen");
 }
 
 Game::~Game()
@@ -36,6 +45,13 @@ void Game::processEvents()
 		case sf::Event::Closed:
 			m_window.close();
 			break;
+		case sf::Event::KeyPressed:
+			switch (windowEvent.key.code)
+			{
+			default:
+				break;
+			}
+			break;
 		default:
 			break;
 		}
@@ -44,17 +60,34 @@ void Game::processEvents()
 
 void Game::update(const float & dt)
 {
+	// temporary variables to demonstrate functionality
+	Ship tempShip;
+	tempShip.setShape(Ship::Shape::Line);
+	Crew tempCrew;
+	tempCrew.setSize(2);
+	Weapon tempWeapon;
+	tempShip.setCrew(tempCrew);
+	tempShip.setWeapon(tempWeapon);
+
 	switch (m_state)
 	{
-	case Game::GameStates::Customize:
+	case GameStates::MainMenu:
 		break;
-	case Game::GameStates::Lobby:
+	case GameStates::Customize:
+		for (int i = 0; i < m_player1.getNumOfShips(); i++)
+		{
+			m_player1.setShip(tempShip, i);
+		}
 		break;
-	case Game::GameStates::Gameplay:
+	case GameStates::Lobby:
+		foundOpponent();
+		m_state = GameStates::Gameplay;
 		break;
-	case Game::GameStates::WinScreen:
+	case GameStates::Gameplay:
 		break;
-	case Game::GameStates::LossScreen:
+	case GameStates::WinScreen:
+		break;
+	case GameStates::LossScreen:
 		break;
 	default:
 		break;
@@ -74,9 +107,16 @@ void Game::sendToLobby()
 
 void Game::foundOpponent()
 {
-	
+	m_player1.setOpponent(&m_player2);
+	m_player2.setOpponent(&m_player1);
 }
 
 void Game::endTurn()
 {
+	m_numOfTurns++;
+}
+
+void Game::DebugMsg(const char * msg)
+{
+	std::cout << msg << std::endl;
 }

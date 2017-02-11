@@ -4,6 +4,9 @@
 // SFML Graphics library
 #include "SFML\Graphics.hpp"
 
+// standard debug library
+#include <iostream>
+
 // Project classes
 #include "Player.h"
 #include "Ship.h"
@@ -24,10 +27,12 @@ private:
 	void foundOpponent();
 	void endTurn();
 
+	void DebugMsg(const char *);
+
 	// game states
 	enum class GameStates
 	{
-		Customize, Gameplay, Lobby, WinScreen, LossScreen
+		MainMenu, Customize, Gameplay, Lobby, WinScreen, LossScreen
 	};
 
 	// what type to customize
@@ -46,7 +51,7 @@ private:
 	sf::Time m_timeElapsed;
 
 	// current total number of turns
-	int numOfTurns;
+	int m_numOfTurns;
 
 	// pointer to the winner
 	Player * m_winner;
