@@ -8,6 +8,7 @@ class Ship
 {
 public:
 	Ship(const int & row = 0, const int & col = 0);
+	Ship(const Ship &);
 	~Ship();
 
 	enum class Shape

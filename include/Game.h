@@ -28,6 +28,7 @@ private:
 	void endTurn();
 
 	void DebugMsg(const char *);
+	void initialize();
 
 	// game states
 	enum class GameStates
@@ -54,7 +55,7 @@ private:
 	int m_numOfTurns;
 
 	// pointer to the winner
-	Player * m_winner;
+	const Player * m_winner;
 
 	// current state of the game
 	GameStates m_state;

@@ -8,6 +8,12 @@ Weapon::Weapon()
 {
 }
 
+Weapon::Weapon(const Weapon & copy)
+	: m_areaOfEffect(copy.m_areaOfEffect)
+	, m_damage(copy.m_damage)
+{
+}
+
 
 Weapon::~Weapon()
 {

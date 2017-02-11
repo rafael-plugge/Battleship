@@ -10,7 +10,7 @@ Player::Player()
 	, m_ships(nullptr)
 {
 	m_ships = new Ship[s_MAX_SHIPS]();
-	for (unsigned i = 0u; i < m_numOfShips; i++)
+	for (int i = 0; i < m_numOfShips; i++)
 	{
 		m_ships[i] = Ship();
 	}
@@ -35,7 +35,7 @@ void Player::playCurrentTurn()
 {
 }
 
-void Player::targetSquare(const int & row, const int & col, const int & index)
+void Player::targetSquare(const int & row, const int & col)
 {
 	if (m_opponent != nullptr)
 	{
@@ -53,6 +53,10 @@ void Player::targetSquare(const int & row, const int & col, const int & index)
 		if (hitOpponent)
 		{
 			m_opponent->destroyShip(i);
+		}
+		else
+		{
+			m_misses++;
 		}
 	}
 }
@@ -83,9 +87,6 @@ void Player::destroyShip(const int & index)
 		}
 
 		m_numOfShips--;
-
-		delete[] m_ships;
-		m_ships = new Ship[m_numOfShips]();
 
 		for (int i = 0; i < m_numOfShips; i++)
 		{
@@ -155,14 +156,6 @@ void Player::setNumOfShips(const int & newNumShips)
 			}
 		}
 		m_numOfShips = newNumShips;
-
-		delete[] m_ships;
-		m_ships = new Ship[m_numOfShips]();
-
-		for (int i = 0; i < m_numOfShips; i++)
-		{
-			m_ships[i] = tempShips[i];
-		}
 	}
 }
 

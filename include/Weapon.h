@@ -5,6 +5,7 @@ class Weapon
 {
 public:
 	Weapon();
+	Weapon(const Weapon &);
 	~Weapon();
 
 	// Getters

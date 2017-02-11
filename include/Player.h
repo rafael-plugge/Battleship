@@ -4,6 +4,7 @@
 // standard library
 // required for name
 #include <string>
+// required for dynamic ships resizing
 
 #include "Ship.h"
 
@@ -14,7 +15,7 @@ public:
 	~Player();
 	void moveShip(const int &, const int &, const int &);
 	void playCurrentTurn();
-	void targetSquare(const int &, const int &, const int &);
+	void targetSquare(const int &, const int &);
 	void hit(const int &);
 	void incTurn();
 	void destroyShip(const int &);
@@ -35,8 +36,8 @@ public:
 	void setNumOfShips(const int &);
 	void setShip(const Ship &, const int &);
 
-private:
 	static const int s_MAX_SHIPS = 4;
+private:
 
 	std::string m_name;
 	int m_misses;

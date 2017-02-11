@@ -7,9 +7,9 @@ Board::Board()
 	, m_numOfCollumns(5)
 	, m_squares()
 {
-	for (unsigned row = 0u; row < m_numOfRows; row++)
+	for (int row = 0; row < m_numOfRows; row++)
 	{
-		for (unsigned col = 0u; col < m_numOfCollumns; col++)
+		for (int col = 0; col < m_numOfCollumns; col++)
 		{
 			m_squares[row][col] = Square();
 		}

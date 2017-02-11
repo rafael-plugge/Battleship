@@ -21,7 +21,6 @@
   <ItemGroup>
     <ClCompile Include="src\Board.cpp" />
     <ClCompile Include="src\Crew.cpp" />
-    <ClCompile Include="src\CrewMember.cpp" />
     <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Player.cpp" />
@@ -32,7 +31,6 @@
   <ItemGroup>
     <ClInclude Include="include\Board.h" />
     <ClInclude Include="include\Crew.h" />
-    <ClInclude Include="include\CrewMember.h" />
     <ClInclude Include="include\Game.h" />
     <ClInclude Include="include\Player.h" />
     <ClInclude Include="include\Ship.h" />

@@ -12,6 +12,16 @@ Ship::Ship(const int & row, const int & col)
 {
 }
 
+Ship::Ship(const Ship & copy)
+	: m_size(copy.m_size)
+	, m_shape(copy.m_shape)
+	, m_row(copy.m_row)
+	, m_col(copy.m_col)
+	, m_crew(copy.m_crew)
+	, m_weapon(copy.m_weapon)
+{
+}
+
 
 Ship::~Ship()
 {
